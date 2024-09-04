@@ -4,6 +4,7 @@ import { Listing, ListingsGrid } from '@/components/listing-card'
 import Navbar from '@/components/navbar'
 import { Button } from '@/components/ui/button'
 import { CallToAction } from '@/components/cta-board'
+import Footer from '@/components/footer'
 
 const listings: Listing[] = [
   {
@@ -73,6 +74,7 @@ function FarmlandRental() {
           </div>
         </div>
       </section>
+      <Footer />
     </main>
   )
 }
