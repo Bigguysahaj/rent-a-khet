@@ -4,7 +4,6 @@ import { Card, CardContent, CardFooter, CardTitle } from './ui/card'
 import { Button } from './ui/button'
 import { Badge } from './ui/badge'
 import { MapPin, Ruler } from 'lucide-react'
-import { features } from 'process'
 
 export interface Listing {
   id: number
@@ -27,6 +26,8 @@ function ListingsGrid({ listings }: { listings: Listing[] }) {
 }
 
 function ListingCard({ listing }: { listing: Listing }) {
+  const slug = listing.label.toLowerCase().replace(/\s+/g, '-')
+
   return (
     <Card className='overflow-hidden transition-all duration-300 hover:shadow-md'>
       <Link href='#' className='block' prefetch={false}>
@@ -64,9 +65,11 @@ function ListingCard({ listing }: { listing: Listing }) {
         </div>
       </CardContent>
       <CardFooter className='px-6 pb-6'>
-        <Button className='w-full bg-primary hover:bg-primary/90 text-primary-foreground transition-colors duration-300 rounded-full py-2 text-sm font-medium shadow-sm hover:shadow-md'>
-          {listing.price}
-        </Button>
+        <Link href={`/listings/${slug}/checkout`} className='w-full'>
+          <Button className='w-full bg-primary hover:bg-primary/90 text-primary-foreground transition-colors duration-300 rounded-full py-2 text-sm font-medium shadow-sm hover:shadow-md'>
+            Rent for {listing.price}
+          </Button>
+        </Link>
       </CardFooter>
     </Card>
   )
