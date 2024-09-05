@@ -12,7 +12,7 @@ export interface Listing {
   size: string
   location: string
   price: string
-  features?: string[]
+  crops?: string[]
 }
 
 function ListingsGrid({ listings }: { listings: Listing[] }) {
@@ -27,11 +27,10 @@ function ListingsGrid({ listings }: { listings: Listing[] }) {
 
 function ListingCard({ listing }: { listing: Listing }) {
   const slug = listing.label.toLowerCase().replace(/\s+/g, '-')
-
   return (
     <Card className='overflow-hidden transition-all duration-300 hover:shadow-md'>
-      <Link href='#' className='block' prefetch={false}>
-        <div className='relative'>
+      <Link href={`/listings/${slug}`} className='block' prefetch={false}>
+        <div className='relative w-full'>
           <Image
             src={listing.image}
             width={400}
@@ -39,13 +38,13 @@ function ListingCard({ listing }: { listing: Listing }) {
             alt={`Farmland - ${listing.size}`}
             className='w-full h-56 object-cover'
           />
-          <div>
-            {listing.features &&
-              listing.features.map((feature, index) => (
+          <div className='absolute top-4 right-4 left-4 flex flex-wrap justify-end gap-2'>
+            {listing.crops &&
+              listing.crops.map((crop, index) => (
                 <Badge
                   key={index}
-                  className='absolute top-4 right-4 bg-gray-700 text-primary-foreground'>
-                  {feature}
+                  className='bg-green-100 text-gray-800 border border-black-800'>
+                  {crop}
                 </Badge>
               ))}
           </div>
@@ -74,5 +73,4 @@ function ListingCard({ listing }: { listing: Listing }) {
     </Card>
   )
 }
-
 export { ListingsGrid, ListingCard }
