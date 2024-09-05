@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Button } from './ui/button'
 
 export function CallToAction() {
@@ -16,7 +17,7 @@ export function CallToAction() {
           </p> */}
           <div className='flex flex-col sm:flex-row gap-4 mt-16 justify-center'>
             <Button className='bg-white text-primary hover:bg-white/90 text-lg px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300'>
-              Baniye humare Kisan Partner
+              <Link href='/partner'>Baniye humare Kisan Partner</Link>
             </Button>
             <Button
               variant='outline'
